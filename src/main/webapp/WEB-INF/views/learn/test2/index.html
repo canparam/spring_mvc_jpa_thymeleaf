@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/layout :: main-fragment(~{::title},~{:: #home-header},~{:: #home-main-content})}">
+
+<head>
+  <title>Test 2</title>
+</head>
+<body>
+
+<div id="home-main-content">
+  <a class="btn btn-success" th:href="@{/player/add}">Add new</a>
+  <div class="mt-3">
+    <form method="get" action="/player">
+      <div class="form-group">
+        <input type="text" class="form-control" name="name"  placeholder="Enter name">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">PlayerName</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Birtday</th>
+      <th scope="col">Address</th>
+      <th scope="col">TeamName</th>
+      <th scope="col">PositionPlay</th>
+      <th scope="col">TransportCost</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="player : ${lists}">
+      <th scope="row" th:text="${player.playerId}">1</th>
+      <td th:text="${player.playerName}"></td>
+      <td th:text="${player.gender == 0 ? 'Male' : 'Female'}"></td>
+      <td th:text="${player.birtday}"></td>
+      <td th:text="${player.address}"></td>
+      <td th:text="${player.teamName}"></td>
+      <td th:text="${player.positionPlay}"></td>
+      <td th:text="${player.transportCost}"></td>
+      <td>
+        <a th:href="@{/player/delete/{id}(id=${player.playerId})}">
+        <button class="btn btn-danger">
+          Delete
+        </button>
+        </a>
+        <a th:href="@{/player/edit/{id}(id=${player.playerId})}">
+          <button class="btn btn-primary">
+            Edit
+          </button>
+        </a>
+        <a th:href="@{/player/view/{id}(id=${player.playerId})}">
+          <button class="btn btn-primary">
+            View
+          </button>
+        </a>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

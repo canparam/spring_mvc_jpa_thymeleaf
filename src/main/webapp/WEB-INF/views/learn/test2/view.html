@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/layout :: main-fragment(~{::title},~{:: #home-header},~{:: #home-main-content})}">
+
+<head>
+  <title>Test 2</title>
+</head>
+<body>
+
+<div id="home-main-content">
+  <form th:action="@{/player/add}" th:object="${player}" method="post">
+    <div class="form-group">
+      <label th:for="playerName">Player Name:</label>
+      <input th:field="*{playerName}" type="text" class="form-control" disabled>
+      <small th:each="err : ${#fields.errors('playerName')}" th:text="${err}" class="error"></small>
+    </div>
+    <div class="form-group" >
+      <select th:field="*{gender}" class="form-control" disabled>
+        <option th:value="'0'" th:text="Male"></option>
+        <option th:value="'1'" th:text="Female"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label th:for="birtday">birtday:</label>
+      <input th:field="*{birtday}" pattern="yyyy-MM-dd" type="date" class="form-control" disabled>
+      <small th:each="err : ${#fields.errors('birtday')}" th:text="${err}" class="error"></small>
+    </div>
+    <div class="form-group">
+      <label th:for="birtday">address:</label>
+      <input th:field="*{address}" type="text" class="form-control" disabled>
+      <small th:each="err : ${#fields.errors('address')}" th:text="${err}" class="error"></small>
+    </div>
+    <div class="form-group">
+      <label th:for="teamName">teamName:</label>
+      <input th:field="*{teamName}" type="text" class="form-control" disabled>
+      <small th:each="err : ${#fields.errors('teamName')}" th:text="${err}" class="error"></small>
+    </div>
+    <div class="form-group">
+      <label th:for="positionPlay">positionPlay:</label>
+      <input th:field="*{positionPlay}" type="text" class="form-control" disabled>
+      <small th:each="err : ${#fields.errors('positionPlay')}" th:text="${err}" class="error"></small>
+    </div>
+    <div class="form-group">
+      <label th:for="transportCost">transportCost:</label>
+      <input th:field="*{transportCost}" type="number" class="form-control" disabled>
+      <small th:each="err : ${#fields.errors('transportCost')}" th:text="${err}" class="error"></small>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
