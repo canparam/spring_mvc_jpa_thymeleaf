@@ -22,43 +22,43 @@
                 condimentum nibh, ut fermentum massa justo sit amet risus.
             </p>
         </div>
-        <div class="media text-muted mt-3">
-            <table>
-                <thead>
-                <tr>
-                    <th> Title</th>
-                    <th> Author</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="computer : ${lists}">
-                    <td><span th:text="${computer.id}"></span></td>
-                    <td><span th:text="${computer.name}"></span></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="media text-muted mt-3">
+<!--        <div class="media text-muted mt-3">-->
+<!--            <table>-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th> Title</th>-->
+<!--                    <th> Author</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr th:each="computer : ${lists}">-->
+<!--                    <td><span th:text="${computer.id}"></span></td>-->
+<!--                    <td><span th:text="${computer.name}"></span></td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--        <div class="media text-muted mt-3">-->
 
-            <form th:action="@{/store}" th:object="${model}" method="post">
-                <div class="form-group">
-                    <label th:for="name">Name:</label>
-                    <input th:field="*{name}" type="text" class="form-control">
-                    <small th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error"></small>
-                </div>
-                <div class="form-group">
-                    <label th:for="producer">producer:</label>
-                    <input th:field="*{producer}" type="text" class="form-control">
-                    <small th:each="err : ${#fields.errors('producer')}" th:text="${err}" class="error"></small>
-                </div>
-                <div class="form-group">
-                    <label th:for="year">year:</label>
-                    <input th:field="*{year}" type="number" class="form-control">
-                    <small th:each="err : ${#fields.errors('year')}" th:text="${err}" class="error"></small>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+<!--            <form th:action="@{/store}" th:object="${model}" method="post">-->
+<!--                <div class="form-group">-->
+<!--                    <label th:for="name">Name:</label>-->
+<!--                    <input th:field="*{name}" type="text" class="form-control">-->
+<!--                    <small th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error"></small>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label th:for="producer">producer:</label>-->
+<!--                    <input th:field="*{producer}" type="text" class="form-control">-->
+<!--                    <small th:each="err : ${#fields.errors('producer')}" th:text="${err}" class="error"></small>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label th:for="year">year:</label>-->
+<!--                    <input th:field="*{year}" type="number" class="form-control">-->
+<!--                    <small th:each="err : ${#fields.errors('year')}" th:text="${err}" class="error"></small>-->
+<!--                </div>-->
+<!--                <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--            </form>-->
+<!--        </div>-->
     </div>
 </div>
 

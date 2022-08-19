@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/layout :: main-fragment(~{::title},~{:: #home-header},~{:: #home-main-content})}">
+
+<head>
+  <title>Test 2</title>
+</head>
+<body>
+
+<div id="home-main-content">
+  <a class="btn btn-success" th:href="@{/country/add}">Add new</a>
+  <div class="mt-3">
+    <form method="get" action="/country">
+      <div class="form-group">
+        <input type="text" class="form-control" name="continent"  placeholder="Enter continent">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Code</th>
+      <th scope="col">Name</th>
+      <th scope="col">Continent</th>
+      <th scope="col">DateCreate</th>
+      <th scope="col">Language</th>
+      <th scope="col">Area</th>
+      <th scope="col">Population</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="player : ${lists}">
+      <th scope="row" th:text="${player.id}">1</th>
+      <td th:text="${player.getCode()}"></td>
+      <td th:text="${player.getName()}"></td>
+      <td th:text="${player.getContinent()}"></td>
+      <td th:text="${player.getDateCreate()}"></td>
+      <td th:text="${player.getLanguage()}"></td>
+      <td th:text="${player.getArea()}"></td>
+      <td th:text="${player.getPopulation()}"></td>
+      <td>
+        <a th:href="@{/country/delete/{id}(id=${player.id})}">
+        <button class="btn btn-danger">
+          Delete
+        </button>
+        </a>
+        <a th:href="@{/country/edit/{id}(id=${player.id})}">
+          <button class="btn btn-primary">
+            Edit
+          </button>
+        </a>
+        <a th:href="@{/country/view/{id}(id=${player.id})}">
+          <button class="btn btn-primary">
+            View
+          </button>
+        </a>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

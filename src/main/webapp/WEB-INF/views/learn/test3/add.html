@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/layout :: main-fragment(~{::title},~{:: #home-header},~{:: #home-main-content})}">
+
+<head>
+  <title>Test 2</title>
+</head>
+<body>
+
+<div id="home-main-content">
+  <form th:action="@{/country/add}" th:object="${country}" method="post">
+    <div class="form-group">
+      <label th:for="code">Code:</label>
+      <input th:field="*{code}" type="text" class="form-control">
+      <small th:each="err : ${#fields.errors('code')}" th:text="${err}" class="error"></small>
+    </div>
+    <div class="form-group">
+      <label th:for="name">Name:</label>
+      <input th:field="*{name}"  type="text" class="form-control">
+      <small th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error"></small>
+    </div>
+    <div class="form-group">
+      <label th:for="continent">Continent:</label>
+      <input th:field="*{continent}" type="text" class="form-control">
+      <small th:each="err : ${#fields.errors('continent')}" th:text="${err}" class="error"></small>
+    </div>
+    <div class="form-group">
+      <label th:for="dateCreate">Date Create:</label>
+      <input th:field="*{dateCreate}" pattern="yyyy-MM-dd" type="date" class="form-control">
+      <small th:each="err : ${#fields.errors('dateCreate')}" th:text="${err}" class="error"></small>
+    </div>
+    <div class="form-group">
+      <label th:for="language">language:</label>
+      <input th:field="*{language}" type="text" class="form-control">
+      <small th:each="err : ${#fields.errors('language')}" th:text="${err}" class="error"></small>
+    </div>
+    <div class="form-group">
+      <label th:for="area">Area:</label>
+      <input th:field="*{area}" type="text" class="form-control">
+      <small th:each="err : ${#fields.errors('area')}" th:text="${err}" class="error"></small>
+    </div>
+    <div class="form-group">
+      <label th:for="population">Population:</label>
+      <input th:field="*{population}" type="number" class="form-control">
+      <small th:each="err : ${#fields.errors('population')}" th:text="${err}" class="error"></small>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>
+
+</body>
+</html>

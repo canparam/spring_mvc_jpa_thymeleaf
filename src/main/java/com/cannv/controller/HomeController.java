@@ -27,10 +27,10 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home(Model model) {
-        List<ComputerDTO> list = this.computerService.getAll();
-        CreateComputerModel requestModel = new CreateComputerModel();
-        model.addAttribute("lists",list);
-        model.addAttribute("model",requestModel);
+//        List<ComputerDTO> list = this.computerService.getAll();
+//        CreateComputerModel requestModel = new CreateComputerModel();
+//        model.addAttribute("lists",list);
+//        model.addAttribute("model",requestModel);
         return "index";
     }
 
